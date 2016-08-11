@@ -55,5 +55,10 @@
     <bean name="/abstractCommand"
           class="ys.springmvc.controllers.MyAbstractCommandController"/>
 
-
+    <!--表单测试-->
+    <bean name="/simpleForm"
+          class="ys.springmvc.controllers.RegisterSimpleFormController">
+        <property name="formView" value="register"/>
+        <property name="successView" value="redirect: /hello"/>
+    </bean>
 </beans>
