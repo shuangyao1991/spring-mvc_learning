@@ -9,6 +9,10 @@ public class User {
 
     private String password;
 
+    private SchoolInfo schoolInfo;
+
+    private WorkInfo workInfo;
+
     public String getUserName() {
         return userName;
     }
@@ -25,11 +29,29 @@ public class User {
         this.password = password;
     }
 
+    public SchoolInfo getSchoolInfo() {
+        return schoolInfo;
+    }
+
+    public void setSchoolInfo(SchoolInfo schoolInfo) {
+        this.schoolInfo = schoolInfo;
+    }
+
     @Override
     public String toString() {
         return "User{" +
                 "userName='" + userName + '\'' +
                 ", password='" + password + '\'' +
+                ", schoolInfo=" + schoolInfo +
+                ", workInfo=" + workInfo +
                 '}';
+    }
+
+    public WorkInfo getWorkInfo() {
+        return workInfo;
+    }
+
+    public void setWorkInfo(WorkInfo workInfo) {
+        this.workInfo = workInfo;
     }
 }

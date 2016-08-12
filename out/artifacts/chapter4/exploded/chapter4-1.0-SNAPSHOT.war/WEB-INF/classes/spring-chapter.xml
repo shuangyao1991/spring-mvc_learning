@@ -33,7 +33,12 @@
     <bean name="/helloNoMV" class="ys.springmvc.controllers.HelloWithoutReturnMVController"/>
     <!--POST method-->
     <bean name="/helloWithPost" class="ys.springmvc.controllers.HelloController">
-        <property name="supportedMethods" value="POST"/>
+        <property name="supportedMethods">
+            <list>
+                <value>GET</value>
+                <value>POST</value>
+            </list>
+        </property>
     </bean>
     <!--require session-->
     <bean name="/helloRequireSession" class="ys.springmvc.controllers.HelloController">
@@ -59,6 +64,45 @@
     <bean name="/simpleForm"
           class="ys.springmvc.controllers.RegisterSimpleFormController">
         <property name="formView" value="register"/>
-        <property name="successView" value="redirect: /hello"/>
+        <property name="successView" value="redirect: /helloWithPost"/>
+        <property name="supportedMethods">
+            <set>
+                <value>GET</value>
+                <value>POST</value>
+            </set>
+        </property>
+    </bean>
+
+    <!--多页表单-->
+    <bean name="/infoFillWizard"
+          class="ys.springmvc.controllers.InfoFillWizardFormController">
+        <property name="supportedMethods">
+            <set>
+                <value>GET</value>
+                <value>POST</value>
+            </set>
+        </property>
+        <property name="pages">
+            <list>
+                <value>wizard/baseInfo</value>
+                <value>wizard/schoolInfo</value>
+                <value>wizard/workInfo</value>
+            </list>
+        </property>
+    </bean>
+
+    <!--参数化视图-->
+    <bean name="/parameterizableView"
+          class="org.springframework.web.servlet.mvc.ParameterizableViewController">
+        <property name="viewName" value="success"/>
+    </bean>
+
+    <!--URL路径计算逻辑视图名-->
+    <bean name="/wizrad/*"
+          class="org.springframework.web.servlet.mvc.UrlFilenameViewController"/>
+    <bean name="/*"
+          class="org.springframework.web.servlet.mvc.UrlFilenameViewController">
+        <!--<property name="suffix" value="Suf"/>-->
+        <!--<property name="prefix" value="pre"/>-->
     </bean>
 </beans>

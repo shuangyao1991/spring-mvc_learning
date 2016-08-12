@@ -22,11 +22,6 @@
     <servlet>
         <servlet-name>forwarding</servlet-name>
         <servlet-class>ys.springmvc.controllers.ForwardingServlet</servlet-class>
-        <!--<init-param>-->
-            <!--<param-name>contextConfigLocation</param-name>-->
-            <!--<param-value>classpath*:spring-forwarding.xml</param-value>-->
-        <!--</init-param>-->
-        <!--<load-on-startup>1</load-on-startup>-->
     </servlet>
     <!--<servlet-mapping>-->
         <!--<servlet-name>forwarding</servlet-name>-->
@@ -52,7 +47,7 @@
     </filter>
     <filter-mapping>
         <filter-name>etagFilter</filter-name>
-        <servlet-name>chapter1</servlet-name>
+        <servlet-name>chapter</servlet-name>
     </filter-mapping>
 
 </web-app>

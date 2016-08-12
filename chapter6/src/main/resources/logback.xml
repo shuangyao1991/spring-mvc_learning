@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>%d [%thread] %-5level %logger{68} %line - logId[%X{client}] - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="DEBUGOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>DEBUG</level>
+        </filter>
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>%d [%thread] %-5level %logger{68} %line - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="loginAppender"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+
+        <File>${LOG_FILE}</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- rollover daily -->
+            <fileNamePattern>
+                <fileNamePattern>${LOG_PATH}/history/%d{yyyy-MM,aux}/${LOG_FILE}_%d</fileNamePattern>
+            </fileNamePattern>
+            <maxHistory>90</maxHistory>
+            <cleanHistoryOnStart>true</cleanHistoryOnStart>
+        </rollingPolicy>
+
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>%d [%thread] %-5level %logger{68} %line - logId[%X{client}] - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="loginErrorAppender"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
+
+        <File>${LOG_PATH}/focus-login.error.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${LOG_PATH}/history/%d{yyyy-MM,aux}/%d.focus-login.error.log
+            </FileNamePattern>
+            <maxHistory>90</maxHistory>
+            <cleanHistoryOnStart>true</cleanHistoryOnStart>
+        </rollingPolicy>
+        <encoder>
+            <charset>UTF-8</charset>
+            <Pattern>%d [%thread] %-5level %logger{68} %line - logId[%X{client}] - %msg%n</Pattern>
+        </encoder>
+    </appender>
+
+
+    <logger name="org.springframework.web.servlet">
+        <level value="DEBUG"/>
+        <appender-ref ref="loginAppender"/>
+    </logger>
+
+    <root level="DEBUG">
+        <appender-ref ref="STDOUT"/>
+    </root>
+
+</configuration>
+

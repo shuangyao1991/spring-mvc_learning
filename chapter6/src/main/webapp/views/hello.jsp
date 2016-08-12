@@ -8,10 +8,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>chapter4</title>
+    <title>chapter6</title>
 </head>
 <body>
-Hello.jsp
+Hello.jsp<hr>
 ${message}
 </body>
 </html>
