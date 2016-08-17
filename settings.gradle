@@ -2,4 +2,5 @@ rootProject.name = 'springmvc'
 include 'chapter4'
 include 'chapter2'
 include 'chapter6'
+include 'test'
 

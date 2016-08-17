@@ -1,0 +1,34 @@
+package ys.springmvc.test.dao;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
+import ys.springmvc.test.model.User;
+
+/**
+ * Created with by shuangyao on 2016/8/17.
+ */
+@Component
+public class UserDAO {
+
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
+
+    public void save(User user){
+        String sql = "insert into user(name, age, birthday) values(" +
+                user.getName() + ", " + user.getAge() + ", " +
+                user.getBirthday() + ")";
+        jdbcTemplate.update(sql);
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    public User getById(int id) throws Exception{
+        String sql = "select * from user where id = " + id;
+        SqlRowSet sqlRowSet = jdbcTemplate.queryForRowSet(sql);
+        return User.getUser(sqlRowSet);
+    }
+
+}
