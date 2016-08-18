@@ -17,5 +17,4 @@
     </bean>
 
     <import resource="classpath*:application-context.xml"/>
-    <import resource="classpath*:datasource.xml"/>
 </beans>

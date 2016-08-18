@@ -12,4 +12,6 @@
     <context:component-scan base-package="ys.springmvc.test.service" />
     <context:component-scan base-package="ys.springmvc.test.controllers"/>
 
+    <import resource="classpath*:datasource.xml"/>
+
 </beans>

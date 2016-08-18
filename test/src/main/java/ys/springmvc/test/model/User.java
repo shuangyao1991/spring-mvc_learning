@@ -2,7 +2,8 @@ package ys.springmvc.test.model;
 
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import java.io.Serializable;
-import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created with by shuangyao on 2016/8/17.
@@ -69,7 +70,10 @@ public class User implements Serializable{
             user.setId(sqlRowSet.getInt("id"));
             user.setName(sqlRowSet.getString("name"));
             user.setAge(sqlRowSet.getInt("age"));
-            user.setBirthday(sqlRowSet.getDate("birthday"));
+
+            String time = sqlRowSet.getString("birthday");
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            user.setBirthday(format.parse(time));
             return user;
         }
 
