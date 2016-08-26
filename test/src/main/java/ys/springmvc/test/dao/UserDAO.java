@@ -1,7 +1,6 @@
 package ys.springmvc.test.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
@@ -18,7 +17,7 @@ public class UserDAO {
     private JdbcTemplate jdbcTemplate;
 
     public void save(User user){
-        String sql = "insert into user (uname, age, birthday) values(" +
+        String sql = "insert into user(uname, age, birthday) values(" +
                 user.getUname() + ", " + user.getAge() + ", " +
                 user.getBirthday() + ")";
         jdbcTemplate.update(sql);
