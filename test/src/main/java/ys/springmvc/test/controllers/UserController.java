@@ -55,15 +55,15 @@ public class UserController{
             User user = userService.getById(id);
             StringBuilder sb = new StringBuilder();
             sb.append(request.getRequestURI()).append(" -> ");
+
+            DataSourceHolder.set(DataSourceTypeEnum.SLAVER);
+            user = userService.getById(id);
+
             if (user == null){
                 sb.append("empty");
             }else {
                 sb.append(user.toString());
             }
-
-            DataSourceHolder.set(DataSourceTypeEnum.SLAVER);
-            user.setBirthday(null);
-            userService.save(user);
 
             outputStream.write(sb.toString().getBytes());
         } catch (Exception e){
