@@ -32,6 +32,7 @@
           <element id="library" level="project" name="Gradle: org.springframework:spring-beans:4.0.2.RELEASE" />
           <element id="library" level="project" name="Gradle: org.springframework:spring-context:4.0.2.RELEASE" />
           <element id="library" level="project" name="Gradle: org.springframework:spring-expression:4.0.2.RELEASE" />
+          <element id="library" level="project" name="Gradle: commons-io:commons-io:2.2" />
         </element>
       </element>
       <element id="directory" name="META-INF">

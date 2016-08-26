@@ -12,7 +12,7 @@ public class User implements Serializable{
 
     private Integer id;
 
-    private String name;
+    private String uname;
 
     private Integer age;
 
@@ -26,12 +26,12 @@ public class User implements Serializable{
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUname() {
+        return uname;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUname(String uname) {
+        this.uname = uname;
     }
 
     public Integer getAge() {
@@ -54,7 +54,7 @@ public class User implements Serializable{
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", uname='" + uname + '\'' +
                 ", age=" + age +
                 ", birthday=" + birthday +
                 '}';
@@ -68,7 +68,7 @@ public class User implements Serializable{
         while (sqlRowSet.next()){
             User user = new User();
             user.setId(sqlRowSet.getInt("id"));
-            user.setName(sqlRowSet.getString("name"));
+            user.setUname(sqlRowSet.getString("uname"));
             user.setAge(sqlRowSet.getInt("age"));
 
             String time = sqlRowSet.getString("birthday");

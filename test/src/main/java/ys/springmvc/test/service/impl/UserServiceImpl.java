@@ -22,7 +22,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void save(User user) {
-        if (user == null || StringUtils.isBlank(user.getName())){
+        if (user == null || StringUtils.isBlank(user.getUname())){
             return;
         }
 

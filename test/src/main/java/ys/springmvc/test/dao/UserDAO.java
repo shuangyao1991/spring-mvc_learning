@@ -18,8 +18,8 @@ public class UserDAO {
     private JdbcTemplate jdbcTemplate;
 
     public void save(User user){
-        String sql = "insert into user(name, age, birthday) values(" +
-                user.getName() + ", " + user.getAge() + ", " +
+        String sql = "insert into user (uname, age, birthday) values(" +
+                user.getUname() + ", " + user.getAge() + ", " +
                 user.getBirthday() + ")";
         jdbcTemplate.update(sql);
     }
