@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.apache.commons.io.IOUtils;
 
-import ys.springmvc.test.enums.DataSourceTypeEnum;
+import ys.springmvc.test.constants.DataSourceConstant;
 import ys.springmvc.test.model.User;
 import ys.springmvc.test.service.UserService;
 import ys.springmvc.test.utils.DataSourceHolder;
@@ -52,11 +52,11 @@ public class UserController{
                               OutputStream outputStream,
                               HttpServletRequest request){
         try {
-            User user = userService.getById(id);
+            User user ;
             StringBuilder sb = new StringBuilder();
             sb.append(request.getRequestURI()).append(" -> ");
 
-            DataSourceHolder.set(DataSourceTypeEnum.SLAVER);
+            DataSourceHolder.set(DataSourceConstant.SLAVER_DB);
             user = userService.getById(id);
 
             if (user == null){

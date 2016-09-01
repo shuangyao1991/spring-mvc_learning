@@ -5,11 +5,11 @@
 
     <!--对主库开启事务控制-->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-        <property name="dataSource" ref="master"/>
+        <property name="dataSource" ref="masterDB"/>
     </bean>
 
     <!--主库-->
-    <bean id="master"
+    <bean id="masterDB"
           class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
         <property name="url" value="jdbc:mysql://localhost:3306/local_test"/>
@@ -18,7 +18,7 @@
     </bean>
     
     <!--从库-->
-    <bean id="slaver"
+    <bean id="slaverDB"
           class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
         <property name="url" value="jdbc:mysql://localhost:3306/local_test2"/>
@@ -30,11 +30,11 @@
     <bean id="myDataSource" class="ys.springmvc.test.utils.DynamicDataSource">
         <property name="targetDataSources">
             <map key-type="java.lang.String">
-                <entry key="master" value-ref="master"/>
-                <entry key="slaver" value-ref="slaver"/>
+                <entry key="master" value-ref="masterDB"/>
+                <entry key="slaver" value-ref="slaverDB"/>
             </map>
         </property>
-        <property name="defaultTargetDataSource" ref="master"/>
+        <property name="defaultTargetDataSource" ref="masterDB"/>
     </bean>
 
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">

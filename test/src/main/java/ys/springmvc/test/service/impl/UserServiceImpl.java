@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ys.springmvc.test.dao.UserDAO;
 import ys.springmvc.test.model.User;
 import ys.springmvc.test.service.UserService;
@@ -20,6 +21,7 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserDAO userDAO;
 
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public void save(User user) {
         if (user == null || StringUtils.isBlank(user.getUname())){

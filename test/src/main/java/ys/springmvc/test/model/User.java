@@ -59,24 +59,4 @@ public class User implements Serializable{
                 ", birthday=" + birthday +
                 '}';
     }
-
-    public static User getUser(SqlRowSet sqlRowSet) throws Exception{
-        if (sqlRowSet == null){
-            return null;
-        }
-
-        while (sqlRowSet.next()){
-            User user = new User();
-            user.setId(sqlRowSet.getInt("id"));
-            user.setUname(sqlRowSet.getString("uname"));
-            user.setAge(sqlRowSet.getInt("age"));
-
-            String time = sqlRowSet.getString("birthday");
-            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-            user.setBirthday(format.parse(time));
-            return user;
-        }
-
-        return null;
-    }
 }
