@@ -29,7 +29,7 @@
     <!--配置动态数据源映射关系-->
     <bean id="myDataSource" class="ys.springmvc.test.utils.DynamicDataSource">
         <property name="targetDataSources">
-            <map key-type="java.lang.String">
+            <map>
                 <entry key="master" value-ref="masterDB"/>
                 <entry key="slaver" value-ref="slaverDB"/>
             </map>
