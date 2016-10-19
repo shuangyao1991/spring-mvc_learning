@@ -1,19 +1,18 @@
 package ys.springmvc.test.controllers;
 
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.apache.commons.io.IOUtils;
-
 import ys.springmvc.test.constants.DataSourceConstant;
 import ys.springmvc.test.model.User;
 import ys.springmvc.test.service.UserService;
 import ys.springmvc.test.utils.DataSourceHolder;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.OutputStream;
 
 /**
@@ -29,11 +28,10 @@ public class UserController{
     @RequestMapping(value = "getById", method = RequestMethod.GET)
     public void getById(@RequestParam(value = "id", required = true) int id,
                         OutputStream outputStream,
-                        HttpServletRequest request,
-                        HttpServletResponse response){
+                        HttpServletRequest request){
+        String result = request.getRequestURI() + " -> ";
         try {
             User user = userService.getById(id);
-            String result = request.getRequestURI() + " -> ";
             if (user == null){
                 result += "empty";
             }else {
@@ -45,6 +43,16 @@ public class UserController{
         }finally {
             IOUtils.closeQuietly(outputStream);
         }
+    }
+
+    @RequestMapping(value = "getById2", method = RequestMethod.GET)
+    public String getById2(@RequestParam(value = "id", required = true) int id,
+                           Model model){
+        User user = userService.getById(id);
+//        model.addAttribute("id", user.getId());
+//        model.addAttribute("uname", user.getUname());
+        model.addAttribute("user", user);
+        return "hello";
     }
 
     @RequestMapping(value = "testDynamicDB", method = RequestMethod.GET)
@@ -67,6 +75,27 @@ public class UserController{
 
             outputStream.write(sb.toString().getBytes());
         } catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            IOUtils.closeQuietly(outputStream);
+        }
+    }
+
+    @RequestMapping(value = "testObject", method = RequestMethod.GET)
+    public void testObject(User user,
+                           OutputStream outputStream,
+                           HttpServletRequest request) {
+        try {
+            String result = request.getRequestURI() + " -> ";
+            DataSourceHolder.set(DataSourceConstant.SLAVER_DB);
+            userService.save(user);
+            if (user == null){
+                result += "empty";
+            }else {
+                result += user.toString();
+            }
+            outputStream.write(result.getBytes());
+        }catch (Exception e){
             e.printStackTrace();
         }finally {
             IOUtils.closeQuietly(outputStream);

@@ -19,7 +19,7 @@ public class UserDAO {
 
     public void save(User user){
         String sql = "insert into user(uname, age, birthday) values(" +
-                user.getUname() + ", " + user.getAge() + ", " +
+                "'" + user.getUname() + "', " + user.getAge() + ", " +
                 user.getBirthday() + ")";
         jdbcTemplate.update(sql);
     }

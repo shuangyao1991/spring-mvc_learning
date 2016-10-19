@@ -5,10 +5,10 @@
       <options external-project-path="$PROJECT_DIR$" />
     </properties>
     <root id="archive" name="springmvc-1.0-SNAPSHOT.war">
-      <element id="javaee-facet-resources" facet="springmvc/web/Web Gradle : springmvc-1.0-SNAPSHOT.war" />
+      <element id="javaee-facet-resources" facet="test-spring-mvc/web/Web Gradle : springmvc-1.0-SNAPSHOT.war" />
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
-          <element id="module-output" name="springmvc" />
+          <element id="module-output" name="test-spring-mvc" />
           <element id="dir-copy" path="$PROJECT_DIR$/build/resources/main" />
         </element>
         <element id="directory" name="lib">
