@@ -20,7 +20,7 @@ public class InexController {
     @RequestMapping(value = "/")
     public String index(ModelMap modelMap){
 //        modelMap.addAttribute("time", System.currentTimeMillis());
-        modelMap.put("token", "1");
+        modelMap.put("token", "tokenValue");
         modelMap.put("test", "hello");
         return "index";
     }
