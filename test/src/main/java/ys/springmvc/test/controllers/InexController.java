@@ -3,6 +3,7 @@ package ys.springmvc.test.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import ys.springmvc.test.utils.ImageCodeUtils;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,7 +19,9 @@ public class InexController {
 
     @RequestMapping(value = "/")
     public String index(ModelMap modelMap){
-        modelMap.addAttribute("time", System.currentTimeMillis());
+//        modelMap.addAttribute("time", System.currentTimeMillis());
+        modelMap.put("token", "1");
+        modelMap.put("test", "hello");
         return "index";
     }
 

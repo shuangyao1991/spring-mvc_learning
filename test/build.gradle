@@ -11,11 +11,11 @@ repositories {
 }
 
 dependencies {
-    compile 'org.springframework:spring-core:4.0.3.RELEASE'
-    compile 'org.springframework:spring-web:4.0.3.RELEASE'
-    compile 'org.springframework:spring-webmvc:4.0.3.RELEASE'
-    compile 'org.springframework:spring-context-support:4.0.3.RELEASE'
-    compile 'org.springframework:spring-jdbc:4.0.3.RELEASE'
+    compile 'org.springframework:spring-core:4.2.7.RELEASE'
+    compile 'org.springframework:spring-web:4.2.7.RELEASE'
+    compile 'org.springframework:spring-webmvc:4.2.7.RELEASE'
+    compile 'org.springframework:spring-context-support:4.2.7.RELEASE'
+    compile 'org.springframework:spring-jdbc:4.2.7.RELEASE'
     compile 'javax.servlet:servlet-api:2.5'
     compile 'javax.servlet.jsp:jsp-api:2.2.1-b03'
     compile 'javax.servlet:jstl:1.2'
@@ -40,6 +40,13 @@ dependencies {
     compile "com.fasterxml.jackson.core:jackson-annotations:2.8.3"
     compile "com.fasterxml.jackson.core:jackson-core:2.8.3"
     compile "com.fasterxml.jackson.core:jackson-databind:2.8.3"
+
+    compile ('org.apache.velocity:velocity:1.7') {
+        exclude group: 'org.springframework'
+    }
+//    compile ('org.apache.velocity:velocity-tools:2.0') {
+//        exclude group: 'org.springframework'
+//    }
 
     testCompile group: 'junit', name: 'junit', version: '4.11'
     testCompile 'org.springframework:spring-test:3.2.8.RELEASE'
