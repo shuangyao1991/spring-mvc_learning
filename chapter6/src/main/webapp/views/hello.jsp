@@ -13,5 +13,6 @@
 <body>
 Hello.jsp<hr>
 ${message}
+id=${id}
 </body>
 </html>

@@ -2,7 +2,9 @@ package ys.springmvc.test.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import ys.springmvc.test.utils.ImageCodeUtils;
 
@@ -34,6 +36,12 @@ public class InexController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @RequestMapping("/test/{id}")
+    public String test(@PathVariable("id") int id,
+                       @RequestParam("name") String name) {
+        return "index";
     }
 
 }
